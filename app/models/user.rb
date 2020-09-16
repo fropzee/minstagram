@@ -10,4 +10,14 @@ has_many :posts
   def full_name
     [first_name, last_name].join(' ')
   end
+
+  def total_followers
+    Follower.where(follower_id: self.id).count
+    end
+
+def total_following
+  Follower.where(following_id: self.id).count
+end
+
+
 end

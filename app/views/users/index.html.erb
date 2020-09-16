@@ -6,7 +6,19 @@
                     <%= post.user.username %>
                 </div>
                 <%= image_tag post.image.url, class: "img img-fluid" %>
+            
+            <div>
+            <%= post.description %>
+            </div>
+            
+
+            <div>
+
+            </div>
             <% end %>
         </div>
+                    <%= link_to "View All", "#" %>
+            <p>Users of Minstagram</p>
+            <%= render "users/all" %>
     </div>
 </div>

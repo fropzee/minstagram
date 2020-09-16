@@ -1,0 +1,11 @@
+<% @all.each do |user| %>
+<div>
+<%= form_tag follow_user_path, method: :post do %>
+<%= hidden_field_tag :follow_id, user.id %>
+<%= submit_tag "Follow", class: 'btn btn-info' %>
+<% end %>
+
+
+<%= link_to user.username, profile_path(user.username) %>
+</div>
+<% end %>
