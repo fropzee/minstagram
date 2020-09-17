@@ -11,6 +11,14 @@
             <%= post.description %>
             </div>
             
+<%= render "posts/comments", post: post %>
+<div>
+<%= form_for @comment do |f| %>
+<%= f.hidden_field :post_id, value: post.id %>
+<%= f.text_field :comment, placeholder: "Add comment here" %>
+<%= f.submit "Comment", class: "btn btn-success float-right" %>
+<% end %>
+</div>
 
             <div>
 

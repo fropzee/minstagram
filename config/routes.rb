@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get "profile/:username" => "users#profile", as: :profile
   post "follow/user" => "users#follow_user", as: :follow_user
   resources :posts, only: [:new,:create,:show]
+  resources :comments, only: [:create]
   root to: "main#home"
 end

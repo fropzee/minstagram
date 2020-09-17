@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:profile]
     def index
         @posts = Post.active
+        @comment = Comment.new
         following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
         following_ids << current_user.id
         @all = User.where.not(id: following_ids)
