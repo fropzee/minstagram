@@ -10,9 +10,9 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id if user_signed_in?
 
     if @post.save
-      redirect_to feeds_path, flash: { success: "post was added successful!" }
+      redirect_to feeds_path
     else
-      redirect_to new_post_path, flash: { danger: "Post was not added!" }
+      redirect_to new_post_path
     end
   end
 

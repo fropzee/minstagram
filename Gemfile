@@ -19,6 +19,8 @@ gem 'webpacker', '~> 4.0'
 gem 'coffee-rails', '~> 5.0'
 gem 'uglifier', '~> 4.2'
 gem 'carrierwave', '~> 2.1'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+gem 'image_magick', '~> 0.1.9'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -37,6 +39,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
+  end
 end
 
 group :development do
@@ -55,6 +60,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'chromedriver-helper', '~> 2.1', '>= 2.1.1'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

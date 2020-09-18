@@ -1,32 +1,35 @@
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-7">
             <% @posts.each do |post| %>
-                <div>
-                    <%= post.user.username %>
+                <div class="post">
+                    <div class="post-meta">
+                        <%= link_to post.user.username, profile_path(post.user.username), class: "text-dark" %>
+                    </div>
+                    <%= image_tag post.image.url, class: "img img-fluid" %>
+                    <div class="post-description">
+                        
+                        <%= post.description %>
+                    </div>
+                    <%= render "posts/comments", post: post %>
+                    <div class="comments">
+                        <%= form_for @comment do |f| %>
+                            <%= f.hidden_field :post_id, value: post.id %>
+                            <div class="input-group">
+                                <%= f.text_field :comment, placeholder: "Add comment here", class: "form-control" %>
+                                <div class="input-group-append">
+                                    <%= f.submit "Comment", class: "btn btn-outline-success btn-sm float-right" %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
                 </div>
-                <%= image_tag post.image.url, class: "img img-fluid" %>
-            
-            <div>
-            <%= post.description %>
-            </div>
-            
-<%= render "posts/comments", post: post %>
-<div>
-<%= form_for @comment do |f| %>
-<%= f.hidden_field :post_id, value: post.id %>
-<%= f.text_field :comment, placeholder: "Add comment here" %>
-<%= f.submit "Comment", class: "btn btn-success float-right" %>
-<% end %>
-</div>
-
-            <div>
-
-            </div>
             <% end %>
         </div>
-                    <%= link_to "View All", "#" %>
+        <div class="all-users">
+            <%= link_to "View All", "#", class: "float-right" %>
             <p>Users of Minstagram</p>
             <%= render "users/all" %>
+        </div>
     </div>
 </div>

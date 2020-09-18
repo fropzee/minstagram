@@ -1,11 +1,15 @@
 <% @all.each do |user| %>
-<div>
-<%= form_tag follow_user_path, method: :post do %>
-<%= hidden_field_tag :follow_id, user.id %>
-<%= submit_tag "Follow", class: 'btn btn-info' %>
-<% end %>
+    <div class="users">
+        <div class="row">
 
-
-<%= link_to user.username, profile_path(user.username) %>
-</div>
+            <div class="col-12 user">
+                <%= link_to profile_picture(user, 30), profile_path(user.username) %>
+                <%= link_to user.username, profile_path(user.username), class: "text-dark" %>
+                    <%= form_tag follow_user_path, method: :post, class: "float-right" do %>
+                    <%= hidden_field_tag :follow_id, user.id %>
+                    <%= submit_tag "Follow", class: 'btn btn-outline-success btn-sm' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 <% end %>

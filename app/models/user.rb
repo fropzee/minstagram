@@ -4,20 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-mount_uploader :image, ImageUploader
+  mount_uploader :image, ImageUploader
 
-has_many :posts
+  has_many :posts
+    
   def full_name
     [first_name, last_name].join(' ')
   end
 
   def total_followers
     Follower.where(follower_id: self.id).count
-    end
+  end
 
-def total_following
-  Follower.where(following_id: self.id).count
-end
-
-
+  def total_following
+    Follower.where(following_id: self.id).count
+  end
 end

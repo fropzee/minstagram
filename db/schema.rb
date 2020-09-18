@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_014712) do
+ActiveRecord::Schema.define(version: 2020_09_20_211526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id"
-    t.bigint "users_id"
-    t.string "comment"
+    t.bigint "user_id"
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["users_id"], name: "index_comments_on_users_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "followers", force: :cascade do |t|
@@ -34,18 +34,13 @@ ActiveRecord::Schema.define(version: 2020_09_16_014712) do
     t.index ["following_id"], name: "index_followers_on_following_id"
   end
 
-  create_table "like", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_like_on_post_id"
-    t.index ["user_id"], name: "index_like_on_user_id"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -55,6 +50,13 @@ ActiveRecord::Schema.define(version: 2020_09_16_014712) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

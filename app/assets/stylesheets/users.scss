@@ -1,3 +1,41 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+    background: #ffffff !important;
+}
+
+.all-users {
+    background: #ffffff;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    width: 300px;
+    height: 250px;
+}
+
+
+
+.profile-count {
+    width: 120px;
+    float: left;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.profile-post {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-gap: 10px;
+    
+}
+
+.user {
+    margin-top: 9px;
+}
