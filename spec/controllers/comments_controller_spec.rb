@@ -1,17 +1,19 @@
 # require 'rails_helper'
 
-# RSpec.describe PostsController, type: :controller do
+# RSpec.describe CommentsController, type: :controller do
 
 #     describe '#create' do
+
 #         let(:params) do
 #             {
-#                 comments: {
+#                 comment: {
+#                     user_id: 25, post_id: 78, comment: 'Super'
 #                 }
 #             }
 #         end
 #         subject { post :create, params: params }
 #         it 'should create comment' do
-#             expect { subject }.to change { Post.count }.by(1)
+#             expect { subject }.to change { Comment.count }.by(1)
 #         end
 #     end
 # end
